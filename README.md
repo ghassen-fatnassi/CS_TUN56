@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ghassen-fatnassi/CS_TUN56">
-    <img src="./images/logo.png" alt="Logo" width="256" height="256">
+    <img src="./images/logo.png" alt="Logo" width="256" height="500">
   </a>
     <h1 width="35px">Soteria</h1>
   <p align="center">
