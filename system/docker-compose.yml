@@ -25,13 +25,6 @@ services:
     networks:
       - tsyp_network
 
-  frontend:
-    context: ./front_end
-    container_name: frontend
-    ports:
-      - "3000:80"
-    networks:
-      - tsyp_network
 
 networks:
   custom_network:
