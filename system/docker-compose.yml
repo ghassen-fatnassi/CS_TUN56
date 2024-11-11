@@ -1,0 +1,38 @@
+version: '3.8'
+
+services:
+  cybersecurity-threat_sa:
+    context: ./cybersecurity-threat_sa
+    container_name: cybersecurity-threat_sa
+    ports:
+      - "8000:80"
+    networks:
+      - tsyp_network
+
+  malware_classification:
+    context: ./malware_classification
+    container_name: malware_classification
+    ports:
+      - "5000:80"
+    networks:
+      - tsyp_network
+
+  Question_Answer_Engine:
+    context: ./Question_Answer_Engine
+    container_name: Question_Answer_Engine
+    ports:
+      - "8080:80"
+    networks:
+      - tsyp_network
+
+  frontend:
+    context: ./front_end
+    container_name: frontend
+    ports:
+      - "3000:80"
+    networks:
+      - tsyp_network
+
+networks:
+  custom_network:
+    driver: bridge
