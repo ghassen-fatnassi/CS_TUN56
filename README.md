@@ -15,7 +15,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/ghassen-fatnassi/CS_TUN56">
-    <img src="./images/logo.png" alt="Logo" width="256" height="500">
+    <img src="./images/logo.png" alt="Logo" width="256" height="256">
   </a>
     <h1 width="35px">Soteria</h1>
   <p align="center">
@@ -181,7 +181,7 @@ The frontend of Soteria is built with **React**, **TypeScript**, and **Vite**. F
 
 2. **Navigate to the Frontend Directory**:
    ```bash
-   cd CS_TUN56/frontend
+   cd CS_TUN56/system/frontend
    ```
 
 3. **Install Dependencies**:
