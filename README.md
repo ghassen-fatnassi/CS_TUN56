@@ -1,9 +1,5 @@
 ## Features
 
-
-
-
-
 <a name="readme-top"></a>
 <div align="center">
 
@@ -38,6 +34,8 @@
   <ol>
     <li><a href="#about-the-project">About The Project</a></li>
     <li><a href="#features">Features</a></li>
+    <li><a href="#system-architecture">System Architecture</a></li>
+    <li><a href="#testing-and-integration">Testing and Integration</a></li>
     <li><a href="#installation">Installation</a></li>
     <li><a href="#usage">Usage</a></li>
     <li><a href="#contributing">Contributing</a></li>
@@ -55,12 +53,13 @@
 
 ## Features
 
-Our system, **Soteria**, is an innovative, multi-layered cybersecurity solution designed to address various types of cyber threats. It is structured as a microservices-based platform, allowing for scalability and modularity. Here’s a detailed breakdown of each component:
+Our system, **Soteria**, is an innovative, multi-layered cybersecurity solution designed to address various types of cyber threats. It is structured as a microservices-based platform, allowing for scalability and modularity. Here's a detailed breakdown of each component:
 
 1. **Reinforcement Learning Agent**:
    - **Environment**: Utilizes the CAGE environment to simulate various cybersecurity scenarios.
-   - **Graph Neural Network (GNN)**: Integrates a GNN to store and track the system status, enabling communication of critical states. This novel approach allows us to train the agent across multiple scenarios without losing accuracy.
-   - **Training Flexibility**: By using this model, the agent can operate under different variations of scenarios, allowing for efficient and robust training.
+   - **Graph Neural Network (GNN)**: Integrates a GNN to store and track the system status, enabling communication of critical states.
+   - **Message Sending Capabilities**: Implements novel message passing through GNN for system status updates.
+   - **Training Flexibility**: Can run in multiple variations without losing accuracy thanks to the GNN architecture.
 
    <div align="center" width="800">
      <img src="./images/net_architecture.png" alt="Reinforcement Learning Agent" width="800">
@@ -68,87 +67,112 @@ Our system, **Soteria**, is an innovative, multi-layered cybersecurity solution 
 
 2. **Twitter Parsing and Threat Detection**:
    - **Threat Analysis**: A logistic regression classifier, combined with a "cyner" instance, assesses threat levels in tweets.
-   - **Blacklist Monitoring**: Soteria can monitor specified blacklisted user IDs in real time, flagging tweets that indicate potential threats.
+   - **Blacklist Monitoring**: Maintains and monitors a blacklist of user IDs for real-time threat detection.
+   - **Real-time Processing**: Processes and analyzes tweets as they are posted for immediate threat assessment.
+   - **Comprehensive Monitoring**: Tracks specified users and keywords for potential security threats.
 
 3. **Malware Analysis Tool**:
-   - **Static Analysis**: Transforms binary data of files into images, which are analyzed using a Convolutional Neural Network (CNN). This method has shown exceptional performance in detecting malware.
-   - **Dynamic Analysis**: Utilizes the VirusTotal API to perform dynamic analysis on suspected files, enhancing the system’s capability to identify malicious behavior.
+   - **Static Analysis**: Novel approach of transforming binary data into images for CNN-based analysis.
+   - **Dynamic Analysis**: Integration with VirusTotal API for comprehensive malware scanning.
+   - **Performance**: Demonstrated exceptional accuracy in malware detection through image-based analysis.
+   - **Real-time Detection**: Continuous monitoring and analysis of file system changes.
 
    <div align="center" width="800">
      <img src="./images/file_analyser.png" alt="Malware Analysis Tool" width="800">
    </div>
 
 4. **HDFS Anomaly Detection**:
-   - **Log Collection**: Multiple agents gather logs from HDFS servers and send them to a centralized manager.
-   - **LSTM Model with Deviation Layer**: Uses an LSTM model with a deviation layer for accurate real-time anomaly detection, feeding results directly into the frontend.
+   - **Distributed Architecture**: Multiple agents collect logs from HDFS servers.
+   - **Centralized Processing**: Centralized manager processes collected data in real-time.
+   - **Advanced Model**: LSTM network with deviation layer for accurate anomaly detection.
+   - **Real-time Updates**: Continuous frontend updates with detection results.
+   - **Scalable Implementation**: Can handle multiple HDFS clusters simultaneously.
 
 5. **Traffic Logging Agent**:
-   - **Data Collection**: Employs CICFlowMeter to collect traffic data from endpoints.
-   - **Voting System**: Utilizes an XGBoost/Random Forest voting system to make predictions on traffic data. This ensures a more accurate threat assessment and forwards the processed data to the frontend.
+   - **Data Collection**: CICFlowMeter integration for comprehensive traffic data collection.
+   - **Endpoint Monitoring**: Collects data from all connected end devices.
+   - **Advanced Analytics**: XGBoost/Random Forest voting system for accurate threat prediction.
+   - **Centralized Management**: Preprocesses and analyzes data through a central manager.
+   - **Real-time Visualization**: Live traffic analysis and threat detection display.
 
    <div align="center" width="800">
      <img src="./images/dashboard.png" alt="Traffic Logging Agent Dashboard" width="800">
    </div>
 
-6. **Zephyr 7B Retrieval-Augmented Generation (RAG) Model**:
-   - **Document Parsing**: Capable of parsing research papers, logs, and external reports from URLs.
-   - **Contextual Question-Answering**: The RAG model can answer queries based on contextual understanding, enhancing the system’s response capability to complex cybersecurity questions.
-   
+6. **Zephyr 7B RAG Model**:
+   - **Document Processing**: Parses research papers, logs, and external URL reports.
+   - **Contextual Analysis**: Provides intelligent responses to cybersecurity queries.
+   - **Integration**: Seamlessly connects with other system components for comprehensive analysis.
+   - **Adaptive Learning**: Updates knowledge base with new security information.
+
    <div align="center" width="800">
      <img src="./images/rag.png" alt="RAG Model" width="800">
    </div>
 
 7. **Comprehensive Frontend**:
-   - **User Interface**: Built with React, the frontend displays all relevant data and analytics in a user-friendly interface.
-   - **Microservices Architecture**: Each component of Soteria is containerized, allowing for individual deployment, scalability, and fault isolation. Docker Compose manages the orchestration for seamless operation.
+   - **Real-time Dashboard**: Displays all system analytics and alerts.
+   - **React-based Interface**: Modern, responsive user interface.
+   - **Microservices Architecture**: Each component runs in isolated Docker containers.
+   - **Orchestration**: Managed through Docker Compose for seamless operation.
 
    <div align="center" width="800">
      <img src="./images/whole_env.jpg" alt="Frontend Overview" width="800">
    </div>
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+## System Architecture
 
-## System Overview
+- **Microservices Design**: 
+  - Each component is containerized independently
+  - Individual scaling capabilities
+  - Fault isolation and resilience
+  - Independent deployment and updates
 
-**Soteria** consists of several interconnected components:
+- **Integration Capabilities**:
+  - Compatible with existing cybersecurity tools
+  - Seamless integration with Suricata, Wazuh, and Filebeat
+  - Extensible plugin architecture
+  - Standardized API interfaces
 
-- **Reinforcement Learning Agent**: Built on the CAGE environment and a Graph Neural Network (GNN) for robust, scenario-based training.
-- **Twitter Parsing and Threat Detection**: A logistic regression model, paired with a threat-detection instance, flags dangerous tweets.
-- **Malware Analysis Tool**: Combines static analysis (CNN-based image representation) and dynamic analysis (VirusTotal API) for effective malware detection.
-- **HDFS Anomaly Detection**: Agents collect logs from HDFS, which are fed into an LSTM model with deviation layers for real-time anomaly alerts.
-- **Traffic Logging Agent**: Collects traffic data via CICFlowMeter and uses an XGBoost/Random Forest voting system for accurate predictions.
-- **Zephyr 7B RAG Model**: Parses documents and logs, answering cybersecurity questions with contextual understanding.
-- **Frontend**: A React-based interface that displays all analytics, threats, and logs in real-time.
+- **Data Flow**:
+  - Centralized log collection
+  - Real-time data processing
+  - Secure communication channels
+  - Scalable storage solutions
 
-This architecture allows **Soteria** to easily integrate with other cybersecurity tools such as **Suricata**, **Wazuh**, and **Filebeat**, enhancing log collection and anomaly detection capabilities. During our tests, we used mock data and connected **Soteria** to virtual machines to simulate cybersecurity attacks and assess its effectiveness.
+## Testing and Integration
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+- **Virtual Environment Testing**:
+  - Comprehensive testing with multiple virtual machines
+  - Simulated network environments
+  - Performance benchmarking
+  - Load testing scenarios
 
-## Additional Resources
+- **Security Testing**:
+  - Penetration testing conducted
+  - Vulnerability assessments
+  - Security compliance checking
+  - Regular security audits
 
-The repository includes:
+- **Tool Integration**:
+  - Suricata for network monitoring
+  - Wazuh for security management
+  - Filebeat for log collection
+  - Custom integration capabilities
 
-- **Pretrained Models**: For each module.
-- **Pipelines**: For easy deployment and integration.
-- **Docker Configurations**: For containerizing and orchestrating all components.
-- **Training Notebooks**: For reproducing model training and performance assessments.
+## Installation
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
-## Frontend Installation Guide
+### Frontend Installation Guide
 
 The frontend of Soteria is built with **React**, **TypeScript**, and **Vite**. Follow these steps to set it up locally:
 
-### Prerequisites
+#### Prerequisites
 
 1. **Node.js**: Ensure you have Node.js installed (version 16 or higher is recommended).
    - You can download it from [Node.js official website](https://nodejs.org/).
 
 2. **Package Manager**: You can use either **npm** (comes with Node.js) or **yarn**.
 
-## Frontend Setup Instructions
-
-### Steps
+#### Setup Instructions
 
 1. **Clone the Repository**:
    ```bash
@@ -195,16 +219,28 @@ The frontend of Soteria is built with **React**, **TypeScript**, and **Vite**. F
 
 ## Usage
 
-1. Deploy the Soteria system using Docker Compose.
+1. Deploy the Soteria system using Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
+
 2. Access the React-based frontend to monitor system status and analytics.
-3. For demonstration, preloaded mock data can be fed into the models to observe functionality.
-4. Logs and alerts will display in real time, with threat levels, anomalies, and other cybersecurity events highlighted.
+
+3. For demonstration purposes:
+   - Use provided mock data to test system functionality
+   - Connect to test virtual machines for live testing
+   - Monitor real-time alerts and analytics
+
+4. Integration with existing tools:
+   - Configure Suricata for network monitoring
+   - Set up Wazuh agents for endpoint security
+   - Deploy Filebeat for log collection
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing
 
-We welcome contributions to improve Soteria! Please fork the repository and create a pull request for any new features or fixes. Contributions can also be submitted as issues.
+We welcome contributions to improve Soteria! Please follow these steps:
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -216,14 +252,15 @@ We welcome contributions to improve Soteria! Please fork the repository and crea
 
 ## Credits
 
-Soteria was created by 
-**Mohamed Aziz Badri Khadhraoui**
-**Ghassen Fatnassi**
-**Mohamed Kaouech**
-**Sahar Guebsi**
-**Chater Marzougui**
-**Fatma Ezzahra ben Helal** 
-and other IEEE SUP'COM Student branch collaborators for the TSYP 2056 CS challenge.
+Soteria was created by:
+- **Mohamed Aziz Badri Khadhraoui**
+- **Ghassen Fatnassi**
+- **Mohamed Kaouech**
+- **Sahar Guebsi**
+- **Chater Marzougui**
+- **Fatma Ezzahra ben Helal**
+
+And other IEEE SUP'COM Student branch collaborators for the TSYP 2056 CS challenge.
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -232,7 +269,6 @@ and other IEEE SUP'COM Student branch collaborators for the TSYP 2056 CS challen
 This project is licensed under the [MIT License](LICENSE).
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 
 <!-- MARKDOWN LINKS & IMAGES -->
 [contributors-shield]: https://img.shields.io/github/contributors/ghassen-fatnassi/CS_TUN56.svg?style=for-the-badge
