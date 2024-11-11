@@ -1,0 +1,40 @@
+blue_action,host,red_action,host
+Sleep,User0,DiscoverRemoteSystems,User0
+Monitor,User0,Analyse User1,User0
+Remove,User0,Remove Enterprise0,User0
+Sleep,User1,DiscoverRemoteSystems,User1
+Monitor,User1,Analyse User1,User1
+Remove,User1,Remove Enterprise1,User1
+Sleep,User2,DiscoverRemoteSystems,User2
+Monitor,User2,Analyse User1,User2
+Remove,User2,Remove Enterprise2,User2
+Sleep,User3,DiscoverRemoteSystems,User3
+Monitor,User3,Analyse User1,User3
+Remove,User3,Remove Enterprise0,User3
+Sleep,User4,DiscoverRemoteSystems,User4
+Monitor,User4,Analyse User1,User4
+Remove,User4,Remove Enterprise2,User4
+Sleep,Enterprise0,DiscoverRemoteSystems,Enterprise0
+Monitor,Enterprise0,Analyse User1,Enterprise0
+Remove,Enterprise0,Remove Op_Host0,Enterprise0
+Sleep,Enterprise1,DiscoverRemoteSystems,Enterprise1
+Monitor,Enterprise1,Analyse User1,Enterprise1
+Remove,Enterprise1,Remove Op_Host1,Enterprise1
+Sleep,Enterprise2,DiscoverRemoteSystems,Enterprise2
+Monitor,Enterprise2,Analyse User1,Enterprise2
+Remove,Enterprise2,Remove Op_Host2,Enterprise2
+Sleep,Op_Host0,DiscoverRemoteSystems,Op_Host0
+Monitor,Op_Host0,Analyse User1,Op_Host0
+Remove,Op_Host0,Remove Op_Server0,Op_Host0
+Sleep,Op_Host1,DiscoverRemoteSystems,Op_Host1
+Monitor,Op_Host1,Analyse User1,Op_Host1
+Remove,Op_Host1,Remove Op_Server0,Op_Host1
+Sleep,Op_Host2,DiscoverRemoteSystems,Op_Host2
+Monitor,Op_Host2,Analyse User1,Op_Host2
+Remove,Op_Host2,Remove Op_Server0,Op_Host2
+Sleep,Op_Server0,DiscoverRemoteSystems,Op_Server0
+Monitor,Op_Server0,Analyse User1,Op_Server0
+Remove,Op_Server0,Remove Defender,Op_Server0
+Sleep,Defender,DiscoverRemoteSystems,Defender
+Monitor,Defender,Analyse User1,Defender
+Remove,Defender,Remove Enterprise0,Defender

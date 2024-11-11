@@ -1,0 +1,4 @@
+2024-11-10 19:27:02,014 INFO:Loaded 5767 sequences from demo_result/hdfs_sequence1.csv
+2024-11-10 19:27:02,037 INFO:Extracted 15 unique Event IDs
+2024-11-10 19:27:02,038 INFO:No duplicate index assignments in EventId mapping.
+2024-11-10 19:27:02,039 INFO:EventId to index mapping saved to demo_result/hdfs_log_templates.json
