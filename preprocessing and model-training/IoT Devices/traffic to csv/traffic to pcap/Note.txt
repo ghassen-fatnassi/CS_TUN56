@@ -1,1 +1,1 @@
-to run script_iot.bat, ensure that you have wireshark installed and tshark as a system variable
+To run script_iot.bat, ensure that you have wireshark installed and tshark as a system variable.

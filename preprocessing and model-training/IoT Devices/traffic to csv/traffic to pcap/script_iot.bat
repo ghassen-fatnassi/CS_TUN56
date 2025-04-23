@@ -24,14 +24,14 @@ for /f "tokens=1* delims=." %%A in ('tshark -D') do (
 
     if "!iot_device!"=="true" (
         rem Capture network traffic for 4 seconds on each IoT-related interface and save to a file
-        tshark -i !interface_num! -a duration:4 -w "C:\Users\Youssef\Desktop\script_test\capture_!interface_num!_%timestamp%.pcap" > nul 2>&1
+        tshark -i !interface_num! -a duration:4 -w ".\script_test\capture_!interface_num!_%timestamp%.pcap" > nul 2>&1
 
         rem Check if the file was created and contains data
-        if exist "C:\Users\Youssef\Desktop\script_test\capture_!interface_num!_%timestamp%.pcap" (
-            for %%F in ("C:\Users\Youssef\Desktop\script_test\capture_!interface_num!_%timestamp%.pcap") do if %%~zF gtr 0 (
+        if exist ".\script_test\capture_!interface_num!_%timestamp%.pcap" (
+            for %%F in (".\script_test\capture_!interface_num!_%timestamp%.pcap") do if %%~zF gtr 0 (
                 echo Traffic captured on IoT interface !interface_name! and saved as capture_!interface_num!_%timestamp%.pcap
             ) else (
-                del "C:\Users\Youssef\Desktop\script_test\capture_!interface_num!_%timestamp%.pcap"
+                del ".\script_test\capture_!interface_num!_%timestamp%.pcap"
                 echo No traffic detected on IoT interface !interface_name!, file deleted.
             )
         ) else (

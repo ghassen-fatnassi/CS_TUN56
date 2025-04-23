@@ -1,1 +1,0 @@
-This part deals with the IoT Traffic. Due to lack of time, it's not totally configured and connected to the full system
